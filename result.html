@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+  <style>
+    .fit img{
+    width: 100%;
+    height: 600px;
+}
+.sss {
+    position: fixed;
+    top: 200px; 
+}
+  .sss div,h1,h4{
+    color: antiquewhite;
+    
+  }
+ 
+.sss button:hover{
+  color: brown;
+  padding: 5px; 
+}
+  </style>
+   
+
+  <div class="sss">
+
+  <h1>Result goes here in card</h1>
+  <div id="resultCard"></div>
+  <!-- <H4>Customer Name:BOLAJI PEACE</H4> -->
+  <button onclick="delete()">delete</button>
+  <button onclick="edit()">edit</button>
+  </div>
+
+  <div class="fit">
+    <img src="image/pexels-tima-miroshnichenko-6693655.jpg" alt="">
+</div>
+  <script>
+ var budgetArray = JSON.parse(localStorage.getItem("budget"));
+
+ if (budgetArray && budgetArray.length > 0) {
+      // var resultCard = document.getElementById("resultCard");
+      var totalSpent = 0 
+      // function delete() {
+        
+      // }
+      for (var i = 0; i < budgetArray.length; i++) {
+        var item = budgetArray[i];
+        var itemCost = item.quant * item.prices;
+        totalSpent += itemCost;
+        resultCard.innerHTML += `<p> product name: ${item.pName} Quantity: ${item.quant} price: ${item.prices}  total = ${itemCost}</p>`;
+      }
+      resultCard.innerHTML += `<p>Total Spent: $${totalSpent.toFixed(2)}</p>`;
+
+  
+      
+    }
+ 
+  </script>
+</body>
+</html>
